@@ -7,8 +7,7 @@ def selection_sort(A):
         temp=A[position]
         A[position]=A[i]
         A[i]=temp
-    return A
 
 data_list = eval(input())
-result = selection_sort(data_list)
-print(result)
+selection_sort(data_list)
+print(data_list)
