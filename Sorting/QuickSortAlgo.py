@@ -3,9 +3,9 @@ def partition(arr, left, right):
     i = left + 1
     j = right
     while True:
-        while i <= j and arr[i] <= pivot:
+        while i <= j and arr[i] < pivot:
             i = i + 1
-        while i <= j and arr[j] > pivot:
+        while i <= j and arr[j] >= pivot:
             j = j - 1
         if i <= j:
             arr[i], arr[j] = arr[j], arr[i]
