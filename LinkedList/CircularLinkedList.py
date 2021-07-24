@@ -29,21 +29,33 @@ class CircularLinkedList:
         self._tail = new_element
         self._size = self._size + 1
 
-
-    def add_at_the_beginning(self,e):
-        new_element=_Node(e,None)
+    def add_at_the_beginning(self, e):
+        new_element = _Node(e, None)
         if self.is_empty():
-            new_element._next=new_element
-            self._head=new_element
-            self._tail=new_element
-            self._size=self._size+1
+            new_element._next = new_element
+            self._head = new_element
+            self._tail = new_element
+            self._size = self._size + 1
         else:
-            new_element._next=self._head
-            self._tail._next=new_element
+            new_element._next = self._head
+            self._tail._next = new_element
         self._head = new_element
         self._size = self._size + 1
 
-
+    def add_at_any_position(self, e, pos):
+        new_element = _Node(e, None)
+        p = self._head
+        pos_count = 1
+        if self._size == 0:
+            print("No element found in the circular linked list :")
+            return -1
+        else:
+            while pos_count < pos - 1:
+                p = p._next
+                pos_count = pos_count + 1
+            new_element._next = p._next
+            p._next = new_element
+            self._size = self._size + 1
 
     def display(self):
         p = self._head
@@ -72,8 +84,7 @@ print("#######################################")
 print("Circular Linked List add at the end: ")
 n.display()
 print()
-print("Size of the Linked List: ",len(n))
-
+print("Size of the Linked List: ", len(n))
 
 print()
 print("#######################################")
@@ -82,4 +93,14 @@ n.add_at_the_beginning(100)
 n.add_at_the_beginning(200)
 n.display()
 print()
-print("Size of the Linked List: ",len(n))
+print("Size of the Linked List: ", len(n))
+
+
+print()
+print("#######################################")
+print("Circular Linked List add at given position in the list: ")
+n.add_at_any_position(1223221,3)
+n.add_at_any_position(12521,4)
+n.display()
+print()
+print("Size of the Linked List: ", len(n))
