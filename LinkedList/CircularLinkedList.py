@@ -57,6 +57,20 @@ class CircularLinkedList:
             p._next = new_element
             self._size = self._size + 1
 
+    def delete_first_element(self):
+        if self.is_empty():
+            print("no element to delete ..")
+            return
+        else:
+            deleted_element = self._head._element
+            self._tail._next = self._head._next
+            self._head = self._head._next
+            self._size = self._size - 1
+        if self.is_empty():
+            self._head = None
+            self._tail = None
+        return deleted_element
+
     def display(self):
         p = self._head
         i = 0
@@ -95,12 +109,23 @@ n.display()
 print()
 print("Size of the Linked List: ", len(n))
 
-
 print()
 print("#######################################")
 print("Circular Linked List add at given position in the list: ")
-n.add_at_any_position(1223221,3)
-n.add_at_any_position(12521,4)
+n.add_at_any_position(1223221, 3)
+n.add_at_any_position(12521, 4)
+n.display()
+print()
+print("Size of the Linked List: ", len(n))
+
+
+print()
+print("#######################################")
+print("Delete first element from Circular Linked List .... ")
+print("Before Deletion :")
+n.display()
+n.delete_first_element()
+print("\nAfter Deletion :")
 n.display()
 print()
 print("Size of the Linked List: ", len(n))
