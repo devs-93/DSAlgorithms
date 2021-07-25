@@ -71,6 +71,22 @@ class CircularLinkedList:
             self._tail = None
         return deleted_element
 
+    def delete_last_element(self):
+        if self.is_empty():
+            print("no element to delete..")
+            return
+        else:
+            p = self._head
+            i = 1
+            while i < self._size - 1:
+                p = p._next
+                i = i + 1
+            self._tail = p
+            p = p._next
+            self._tail._next = p._next
+            self._size = self._size - 1
+        return p._element
+
     def display(self):
         p = self._head
         i = 0
@@ -94,14 +110,14 @@ n.add_at_the_last(501)
 n.add_at_the_last(521)
 n.add_at_the_last(50001)
 print(len(n))
-print("#######################################")
+print("#################################################################")
 print("Circular Linked List add at the end: ")
 n.display()
 print()
 print("Size of the Linked List: ", len(n))
 
 print()
-print("#######################################")
+print("#################################################################")
 print("Circular Linked List add at the starting: ")
 n.add_at_the_beginning(100)
 n.add_at_the_beginning(200)
@@ -110,7 +126,7 @@ print()
 print("Size of the Linked List: ", len(n))
 
 print()
-print("#######################################")
+print("#################################################################")
 print("Circular Linked List add at given position in the list: ")
 n.add_at_any_position(1223221, 3)
 n.add_at_any_position(12521, 4)
@@ -118,13 +134,24 @@ n.display()
 print()
 print("Size of the Linked List: ", len(n))
 
-
 print()
-print("#######################################")
+print("#################################################################")
 print("Delete first element from Circular Linked List .... ")
 print("Before Deletion :")
 n.display()
 n.delete_first_element()
+print("\nAfter Deletion :")
+n.display()
+print()
+print("Size of the Linked List: ", len(n))
+
+print()
+print("#################################################################")
+print("Delete last element from Circular Linked List .... ")
+print("Before Deletion :")
+n.display()
+n.delete_last_element()
+n.delete_last_element()
 print("\nAfter Deletion :")
 n.display()
 print()
