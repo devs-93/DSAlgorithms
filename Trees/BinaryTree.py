@@ -1,3 +1,6 @@
+from Queues.QueueLinkedList import QueueLinkedList
+
+
 class _Node:
     __slots__ = "_element", "_left", "_right"
 
@@ -32,6 +35,25 @@ class BinaryTree:
             print(t_root._element, end=" ")
             self.preorder_traversal(t_root._right)
 
+    def level_order(self,t_root):
+        Q = QueueLinkedList()
+        t = t_root
+        print(t._element, end=" ")
+        Q.enqueue(t)
+        while not Q.isempty():
+            removed_address=Q.dequeue()
+            if removed_address._left:
+                print(removed_address._left._element,end=" ")
+                Q.enqueue(removed_address._left)
+            if removed_address._right:
+                print(removed_address._right._element,end=" ")
+                Q.enqueue(removed_address._right)
+
+
+
+
+
+
 
 x = BinaryTree()
 y = BinaryTree()
@@ -49,3 +71,6 @@ x.postorder_traversal(z._root)
 print()
 print("inorder_traversal")
 x.inorder_traversal(z._root)
+print()
+print("level_order")
+x.level_order(z._root)
