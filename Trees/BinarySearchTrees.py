@@ -41,12 +41,22 @@ class BinarySearchTree:
             t_root = n
         return t_root
 
+    def search_iter(self, key):
+        t_root = self._root
+        while t_root:
+            if t_root._element == key:
+                return True
+            elif key < t_root._element:
+                t_root = t_root._left
+            elif key > t_root._element:
+                t_root = t_root._right
+        return False
+
     def inorder_traversal(self, t_root):
         if t_root:
             self.inorder_traversal(t_root._left)
             print(t_root._element, end=" ")
             self.inorder_traversal(t_root._right)
-
 
 
 ##Binary Search Tree using iterative approach
@@ -72,3 +82,8 @@ c.insert_recur(c._root, 7)
 c.insert_recur(c._root, 8)
 c.inorder_traversal(c._root)
 print("Done")
+
+##Searching Element in Tree
+print(c.search_iter(2))
+print(c.search_iter(3))
+print(c.search_iter(1000))
